@@ -1,21 +1,17 @@
 const router = require('express').Router()
-const { User } = require('../models')
+const { BlogPost } = require('../models')
 const withAuth = require('../utils/auth')
 
 // Prevent non logged in users from viewing the homepage
 router.get('/', withAuth, async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
-    })
-    console.log('AFTER MIDDLEWEAR')
+    const blogPostData = await BlogPost.findAll({})
 
-    const users = userData.map((project) => project.get({ plain: true }))
+    const BlogPosts = blogPostData.map((blogPost) => blogPost.get({ plain: true }))
 
-    console.log('HOMEPAGE')
+    console.log(BlogPosts)
     res.render('homepage', {
-      users,
+      BlogPosts,
       // Pass the logged in flag to the template
       loggedIn: req.session.loggedIn,
     })
