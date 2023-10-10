@@ -2,7 +2,22 @@ const router = require('express').Router()
 const { BlogPost } = require('../../models')
 const withAuth = require('../../utils/auth')
 
-//api//blogPost/
+//api/blogPost/
+router.post('/', withAuth, async (req, res) => {
+  try {
+    const blogPostData = await BlogPost.create({
+      title: req.body.title,
+      comment: req.body.comment,
+      date: req.body.date,
+      user_id: req.session.user_id,
+    })
+
+    res.status(200).json(blogPostData)
+  } catch (err) {
+    console.log(err)
+    res.status(400).json(err)
+  }
+})
 
 //DELETE //api//blogPost/id
 router.delete('/:id', withAuth, async (req, res) => {
