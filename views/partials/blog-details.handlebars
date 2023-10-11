@@ -6,4 +6,23 @@
   <p class='card-text'>
     {{comment}}
   </p>
+  <div class='form-group d-flex flex-row align-items-center'>
+    <input
+      id='commentInput{{id}}'
+      class='form-control'
+      type='text'
+      placeholder='Add your comment'
+    />
+    <button
+      style='margin:.25em'
+      id='comment-btn{{id}}'
+      data-id={{id}}
+      class='btn btn-dark commentButton'
+    >Comment</button>
+  </div>
+  <ul id='commentList{{id}}'>
+    {{#each comments as |comment|}}
+      <li>{{comment.user.name}}: {{comment.comment}}</li>
+    {{/each}}
+  </ul>
 </div>

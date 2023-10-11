@@ -34,4 +34,17 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 })
 
+//EDIT /api/blogPost/id
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const blogPost = BlogPost.update(req.body, {
+      where: { id: req.params.id },
+    })
+    res.status(200).json(blogPost)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+})
+
 module.exports = router

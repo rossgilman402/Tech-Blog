@@ -14,6 +14,28 @@
         </div>
       </div>
     </div>
+    <form id='edit-form' class='border p-4 rounded' style='display:none;'>
+      <div class='form-group'>
+        <h2 class='p-1'>Edit Post</h2>
+        <label for='edit-title-{{id}}'>Title</label>
+        <input class='form-control' id='edit-title-{{id}}' placeholder='Enter title' />
+      </div>
+      <div class='form-group'>
+        <label for='edit-content-{{id}}'>Content</label>
+        <textarea
+          class='form-control'
+          id='edit-content-{{id}}'
+          rows='3'
+          placeholder='Enter content'
+        ></textarea>
+      </div>
+      <div class='row justify-content-center'>
+        <button class='btn btn-dark edit-btn' class='col-md-5 btn btn-dark mr-2'>
+          Edit
+        </button>
+      </div>
+    </form>
+
   {{/each}}
 </main>
 <footer class='d-flex justify-content-center'>
