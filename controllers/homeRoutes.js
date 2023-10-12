@@ -10,7 +10,7 @@ router.get('/', withAuth, async (req, res) => {
     })
 
     const BlogPosts = blogPostData.map((blogPost) => blogPost.get({ plain: true }))
-    console.log(BlogPosts)
+
     res.render('homepage', {
       BlogPosts,
       // Pass the logged in flag to the template
@@ -25,7 +25,6 @@ router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
 
   if (req.session.loggedIn) {
-    console.log('REDIRECT TO LOGIN PAGE')
     res.redirect('/')
     return
   }
@@ -43,9 +42,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
     })
 
     const posts = BlogPostData.map((post) => post.get({ plain: true }))
-    console.log(posts)
+
     res.render('dashboard', {
       posts,
+      loggedIn: req.session.loggedIn,
     })
   } catch (err) {
     res.status(500).json(err)

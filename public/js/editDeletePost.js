@@ -29,7 +29,7 @@ const showEdit = async (event) => {
 
   id = event.target.dataset.id
   console.log('showEdit: ' + id)
-  const editFormEl = document.querySelector('#edit-form')
+  const editFormEl = document.querySelector(`#edit-form-${id}`)
   editFormEl.style.display = 'block'
 }
 
@@ -42,7 +42,7 @@ const editPostHandler = async (event) => {
 
   const comment = document.querySelector(`#edit-content-${id}`).value.trim()
 
-  console.log(title + comment)
+  console.log(comment)
 
   const response = await fetch(`/api/blogPost/${id}`, {
     method: 'PUT',
@@ -56,7 +56,7 @@ const editPostHandler = async (event) => {
   console.log(response)
 
   if (response.ok) {
-    // document.location.replace(`/dashboard`)
+    document.location.replace(`/dashboard`)
   } else {
     alert('Failed to edit Post')
   }
