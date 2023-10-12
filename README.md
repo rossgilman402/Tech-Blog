@@ -54,7 +54,7 @@ git clone https://github.com/rossgilman402/Tech-Blog.git
 To run the Tech Blog
 1) setup sql server - mysql -u root -p *password*
 2) run database while in the db directory - source schema.sql
-3) run node server - npm run dev
+3) run node server while in the main directory - npm run dev
 
 ## Usage
 
